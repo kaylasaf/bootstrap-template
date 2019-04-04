@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>web percobaan semoga bisa</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-md-11">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Id</th>
+                        <th>Judul</th>
+                        <th>Konten</th>
+                        <th colspan="2">Opsi</th>
+                    </tr>
+                    <?php
+                    if( ! empty($artikel)){ // Jika data siswa tidak sama dengan kosong, artinya jika data siswa ada
+                        foreach($artikel as $data){
+                        echo "<tr>
+                        <td>".$data->id."</td>
+                        <td>".$data->judul."</td>
+                        <td>".$data->konten."</td>
+                        <td><a href='".base_url("siswa/ubah/".$data->id)."'>Edit</a></td>
+                        <td><a href='".base_url("siswa/hapus/".$data->id)."'>Delete</a></td>
+                        </tr>";
+                        }
+                    }else{ // Jika data siswa kosong
+                        echo "<tr><td align='center' colspan='7'>Data Tidak Ada</td></tr>";
+                    }
+                    ?>
+                </table>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+ <?php
+                                function limit_words($string, $word_limit){
+                                    $words = explode(" ",$string);
+                                    return implode(" ",array_splice($words,0,$word_limit));
+                                }
+                                if( ! empty($artikel)){ // Jika data siswa tidak sama dengan kosong, artinya jika data siswa ada
+                                    foreach($artikel as $data){
+                                    echo '
+                                    <div class="col-md-12">
+                                        <div class="post post-row">
+                                            <a class="post-img" href="blog-post.html"><img src="./img/post-4.jpg" alt=""></a>
+                                            <div class="post-body">
+                                                <div class="post-meta">
+                                                    <a class="post-category cat-2" href="category.html">JavaScript</a>
+                                                    <span class="post-date">March 27, 2018</span>
+                                                </div>
+                                                <h3 class="post-title"><a href="blog-post.html">'.$data->judul.'</a></h3>
+                                                <p>'.$data->konten.'</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    ';
+                                    }
+                                }else{ // Jika data siswa kosong
+                                    echo "<tr><td align='center' colspan='7'>Data Tidak Ada</td></tr>";
+                                }
+                            ?>
